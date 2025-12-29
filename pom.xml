@@ -1,4 +1,5 @@
 
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -13,26 +14,23 @@
   <description>Sample Maven project with a working, deployable site.</description>
   <url>http://www.example.com</url>
 
-  <!-- ===== Properties ===== -->
   <properties>
-    <!-- Consistent encodings -->
+    <!-- Encodings -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- Choose your Java level: 8, 11, 17, or 21 -->
     <maven.compiler.release>21</maven.compiler.release>
 
-    <!-- Optional: Minimum Maven for modern plugins -->
+    <!-- Minimum Maven version recommended for modern plugins -->
     <maven.minimum.version>3.6.3</maven.minimum.version>
   </properties>
 
-  <!-- ===== Modules ===== -->
   <modules>
     <module>server</module>
     <module>webapp</module>
   </modules>
 
-  <!-- ===== Distribution Management (unchanged) ===== -->
   <distributionManagement>
     <site>
       <id>site-server</id>
@@ -41,10 +39,9 @@
     </site>
   </distributionManagement>
 
-  <!-- ===== Build & Plugins ===== -->
   <build>
     <plugins>
-      <!-- 🔧 Modern compiler plugin using --release -->
+      <!-- Compiler plugin using --release -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -54,7 +51,7 @@
         </configuration>
       </plugin>
 
-      <!-- Your WAR plugin (kept as-is) -->
+      <!-- WAR plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -64,7 +61,7 @@
         </configuration>
       </plugin>
 
-      <!-- Release plugin (config kept as-is) -->
+      <!-- Release plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -74,7 +71,7 @@
         </configuration>
       </plugin>
 
-      <!-- Site plugin and report plugins (kept as-is) -->
+      <!-- Site + reports -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
@@ -120,14 +117,14 @@
         </configuration>
       </plugin>
 
-      <!-- ✅ Enforce JDK at build time to avoid mismatches -->
+      <!-- Enforce Java/Maven versions to avoid mismatches on CI -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>3.4.1</version>
         <executions>
           <execution>
-            <id>enforce-java</id>
+            <id>enforce-versions</id>
             <goals>
               <goal>enforce</goal>
             </goals>
@@ -146,19 +143,17 @@
       </plugin>
     </plugins>
 
-    <!-- ===== Plugin Management: update/remove old pins ===== -->
     <pluginManagement>
       <plugins>
-        <!-- Keep report plugin pins only if you need exact versions -->
-
-        <!-- 🔴 Most important: Update compiler plugin pin so modules don't inherit 2.3.2 -->
+        <!-- IMPORTANT: Keep compiler plugin pinned to a modern version -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.11.0</version>
         </plugin>
 
-        <!-- (Others retained from your original POM; you can modernize later if desired) -->
+        <!-- The following pins are retained from your original POM.
+             You can modernize them later if needed. -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
@@ -228,7 +223,6 @@
     </pluginManagement>
   </build>
 
-  <!-- ===== Dependency Management (unchanged) ===== -->
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -236,34 +230,29 @@
         <artifactId>servlet-api</artifactId>
         <version>2.5</version>
       </dependency>
-
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
         <artifactId>jsp-api</artifactId>
         <version>2.2</version>
       </dependency>
-
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit-dep</artifactId>
         <version>4.10</version>
         <scope>test</scope>
       </dependency>
-
       <dependency>
         <groupId>org.hamcrest</groupId>
         <artifactId>hamcrest-core</artifactId>
         <version>1.2.1</version>
         <scope>test</scope>
       </dependency>
-
       <dependency>
         <groupId>org.hamcrest</groupId>
         <artifactId>hamcrest-library</artifactId>
         <version>1.2.1</version>
         <scope>test</scope>
       </dependency>
-
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
@@ -273,7 +262,6 @@
     </dependencies>
   </dependencyManagement>
 
-  <!-- ===== SCM (unchanged) ===== -->
   <scm>
     <connection>scm:git:git@github.com:jleetutorial/maven-project.git</connection>
     <developerConnection>scm:git:git@github.com:jleetutorial/maven-project.git</developerConnection>
@@ -281,9 +269,7 @@
     <url>http://github.com/jleetutorial/maven-project</url>
   </scm>
 
-   <!-- ===== Prerequisites ===== -->
   <prerequisites>
-    <!-- Require at least this Maven version -->
-    <maven>${maven.minimum.version}</maven>
+    <maven>${maven.minimum.version    <maven>${maven.minimum.version}</maven>
   </prerequisites>
 
