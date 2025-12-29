@@ -1,5 +1,6 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Parent POM for Maven multi-module project; valid XML comments only -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -19,10 +20,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <!-- Choose your Java level: 8, 11, 17, or 21 -->
+    <!-- Select Java level: 8, 11, 17, or 21 -->
     <maven.compiler.release>21</maven.compiler.release>
 
-    <!-- Minimum Maven version recommended for modern plugins -->
+    <!-- Recommended minimum Maven version -->
     <maven.minimum.version>3.6.3</maven.minimum.version>
   </properties>
 
@@ -41,7 +42,7 @@
 
   <build>
     <plugins>
-      <!-- Compiler plugin using --release -->
+      <!-- Compiler plugin configured to use the chosen Java release level -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -117,7 +118,7 @@
         </configuration>
       </plugin>
 
-      <!-- Enforce Java/Maven versions to avoid mismatches on CI -->
+      <!-- Enforce Java/Maven versions to avoid CI mismatches -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -145,15 +146,14 @@
 
     <pluginManagement>
       <plugins>
-        <!-- IMPORTANT: Keep compiler plugin pinned to a modern version -->
+        <!-- Keep compiler plugin pinned to modern version so children inherit it -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.11.0</version>
         </plugin>
 
-        <!-- The following pins are retained from your original POM.
-             You can modernize them later if needed. -->
+        <!-- Other pins retained from original; modernize later if desired -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
@@ -270,6 +270,6 @@
   </scm>
 
   <prerequisites>
-    <maven>${maven.minimum.version    <maven>${maven.minimum.version}</maven>
+    <maven>${maven.minimum.version}</maven>
   </prerequisites>
 
