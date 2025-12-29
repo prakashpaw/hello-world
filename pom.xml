@@ -1,9 +1,7 @@
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion> 
 
   <groupId>com.example.maven-project</groupId>
   <artifactId>maven-project</artifactId>
@@ -14,14 +12,8 @@
   <url>http://www.example.com</url>
 
   <properties>
-    <!-- Use uppercase UTF-8; Maven recommends this casing -->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <!-- Choose one: 8, 11, 17, or 21 -->
-    <maven.compiler.release>11</maven.compiler.release>
-    <!-- Optional: pin maven version used by developers -->
-    <maven.version.minimum>3.6.3</maven.version.minimum>
+    <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
   </properties>
 
   <modules>
@@ -39,26 +31,21 @@
 
   <build>
     <plugins>
-      <!-- Modern compiler plugin with unified release level -->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
         <configuration>
-          <release>${maven.compiler.release}</release>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
-
-      <!-- Your war plugin is fine; keep as-is -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.3.2</version>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
-
+                    <plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-war-plugin</artifactId>
+                   <version>3.3.2</version>
+                   <configuration>
+                       <failOnMissingWebXml>false</failOnMissingWebXml>
+                   </configuration>
+              </plugin>
       <plugin>
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
@@ -73,22 +60,28 @@
             <plugin>
               <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
+
             <plugin>
               <artifactId>maven-jxr-plugin</artifactId>
             </plugin>
+
             <plugin>
               <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
+
             <plugin>
               <artifactId>maven-pmd-plugin</artifactId>
             </plugin>
+
             <plugin>
               <artifactId>maven-surefire-report-plugin</artifactId>
             </plugin>
+
             <plugin>
               <groupId>org.codehaus.mojo</groupId>
               <artifactId>findbugs-maven-plugin</artifactId>
             </plugin>
+
             <plugin>
               <groupId>org.codehaus.mojo</groupId>
               <artifactId>taglist-maven-plugin</artifactId>
@@ -98,21 +91,16 @@
       </plugin>
     </plugins>
 
-    <!-- Remove old versions here or update them; at minimum, do not pin compiler to 2.3.2 -->
     <pluginManagement>
       <plugins>
-        <!-- Keep report plugin pins only if you need them; otherwise you can drop this whole block. -->
         <plugin>
           <artifactId>maven-checkstyle-plugin</artifactId>
           <version>2.8</version>
         </plugin>
 
-        <!-- IMPORTANT: Either delete this old compiler pin OR update it to match the plugin above.
-             Leaving the old 2.3.2 causes your modules to inherit Java 7 behavior. -->
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.11.0</version>
+          <version>2.3.2</version>
         </plugin>
 
         <plugin>
@@ -188,29 +176,34 @@
         <artifactId>servlet-api</artifactId>
         <version>2.5</version>
       </dependency>
+
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
         <artifactId>jsp-api</artifactId>
         <version>2.2</version>
       </dependency>
+
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit-dep</artifactId>
         <version>4.10</version>
         <scope>test</scope>
       </dependency>
+
       <dependency>
         <groupId>org.hamcrest</groupId>
         <artifactId>hamcrest-core</artifactId>
         <version>1.2.1</version>
         <scope>test</scope>
       </dependency>
+
       <dependency>
         <groupId>org.hamcrest</groupId>
         <artifactId>hamcrest-library</artifactId>
         <version>1.2.1</version>
         <scope>test</scope>
       </dependency>
+
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
@@ -228,7 +221,7 @@
   </scm>
 
   <prerequisites>
-    <!-- Your original says 3.0.3; consider requiring at least 3.6.3 or newer -->
-    <maven>3.6.3</    <maven>3.6.3</maven>
+    <maven>3.0.3</maven>
   </prerequisites>
 
+</project>
